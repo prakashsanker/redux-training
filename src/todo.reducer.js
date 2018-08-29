@@ -6,19 +6,26 @@ import {
 } from "./todo.actions.js";
 import data from "./data.js";
 
+const COMPLETED = "completed";
+const OPEN = "open";
+
 const todo = (state = [], action) => {
   switch (action.type) {
     case GET_TODOS:
       return data;
-    // case CREATE_TODO:
-    //   action.data.todoDetails.id = data.length + 1;
-    //   data.push(todoDetails);
-    //   return data;
-    // case EDIT_TODO:
-    //   Object.keys(data).map(function(key, index) {
-    //     if(inde)
-    //   });
-    //   return data;
+
+    case CREATE_TODO:
+      let existingState = state;
+
+      const todoDetails = {};
+      todoDetails.id = new Date().getTime();
+      todoDetails.description = action.data.desc;
+      todoDetails.title = action.data.title;
+      todoDetails.time = Date.now();
+      todoDetails.status = OPEN;
+      const newTodos = existingState.map(todo => todo);
+
+      return newTodos;
 
     default:
       return state;
