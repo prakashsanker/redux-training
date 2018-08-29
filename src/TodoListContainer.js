@@ -4,8 +4,6 @@ import { getTodos } from "./todo.actions.js";
 import TodoList from "./TodoList.js";
 
 const mapStateToProps = state => {
-  console.log("state");
-  console.log(state);
   return {
     todos: state
   };

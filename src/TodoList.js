@@ -3,7 +3,6 @@ import Todo from "./Todo.js";
 
 export default class TodoList extends React.Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.getTodos();
   }
   render() {
