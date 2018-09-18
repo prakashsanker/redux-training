@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+
 import "./Todo.css";
 export default class Todo extends React.Component {
   render() {

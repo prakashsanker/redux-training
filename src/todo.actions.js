@@ -1,36 +1,39 @@
 export const GET_TODOS = "GET_TODOS";
-export const CREATE_TODO = "CREATE_TODO";
-export const EDIT_TODO = "EDIT_TODO";
-export const DELETE_TODO = "DELETE_TODO";
+export const GET_TODOS_FAILURE = "GET_TODOS_FAILURE";
+export const GET_TODOS_SUCCESS = "GET_TODOS_SUCCESS";
+export const GET_TODOS_REQUEST = "GET_TODOS_REQUEST";
+export function getTodosFailure(errorMessage) {
+  return {
+    type: GET_TODOS_FAILURE,
+    errorMessage
+  };
+}
+
+export function getTodosSuccess(data) {
+  return {
+    type: GET_TODOS_SUCCESS,
+    todoData: data
+  };
+}
+
+export function getTodosRequest() {
+  return {
+    type: GET_TODOS_REQUEST
+  };
+}
 
 export function getTodos() {
-  return {
-    type: GET_TODOS
-  };
-}
-
-export function createTodo(todoDetails) {
-  return {
-    type: CREATE_TODO,
-    data: todoDetails
-  };
-}
-
-export function editTodo(id, valuesToChange) {
-  return {
-    type: EDIT_TODO,
-    data: {
-      id,
-      ...valuesToChange
-    }
-  };
-}
-
-export function deleteTodo(id) {
-  return {
-    type: DELETE_TODO,
-    data: {
-      id
+  return async dispatch => {
+    try {
+      dispatch(getTodosRequest());
+      const result = await fetch("http://localhost:3000/todos");
+      const resultJson = await result.json();
+      if (resultJson.error) {
+        throw new Error(resultJson.error);
+      }
+      dispatch(getTodosSuccess(resultJson));
+    } catch (e) {
+      dispatch(getTodosFailure(e.message));
     }
   };
 }

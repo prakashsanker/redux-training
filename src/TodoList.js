@@ -3,9 +3,10 @@ import Todo from "./Todo.js";
 
 export default class TodoList extends React.Component {
   componentDidMount() {
-    this.props.getTodos();
+    this.props.pending();
   }
   render() {
+    console.log(this.props);
     return (
       <React.Fragment>
         {this.props.todos.map(todo => {

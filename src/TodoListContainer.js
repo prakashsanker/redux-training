@@ -1,4 +1,3 @@
-// containeri
 import { connect } from "react-redux";
 import { getTodos } from "./todo.actions.js";
 import TodoList from "./TodoList.js";
