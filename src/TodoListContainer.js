@@ -7,7 +7,6 @@ const mapStateToProps = state => {
     todos: state
   };
 };
-
 const mapDispatchToProps = dispatch => {
   return {
     getTodos: () => {
@@ -15,7 +14,6 @@ const mapDispatchToProps = dispatch => {
     }
   };
 };
-
 const TodoListContainer = connect(
   mapStateToProps,
   mapDispatchToProps

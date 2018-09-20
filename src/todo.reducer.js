@@ -4,12 +4,12 @@ import {
   GET_TODOS_REQUEST,
   GET_TODOS_SUCCESS
 } from "./todo.actions.js";
-
 const initialState = {
   todo: [],
   errorMessage: "",
   isFetching: false
 };
+
 const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_TODOS_REQUEST:

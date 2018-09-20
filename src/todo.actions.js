@@ -8,7 +8,6 @@ export function getTodosFailure(errorMessage) {
     errorMessage
   };
 }
-
 export function getTodosSuccess(data) {
   return {
     type: GET_TODOS_SUCCESS,
