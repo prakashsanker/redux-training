@@ -15,7 +15,6 @@ export function createTodo(todoDetails) {
     data: todoDetails
   };
 }
-
 export function editTodo(id, valuesToChange) {
   return {
     type: EDIT_TODO,

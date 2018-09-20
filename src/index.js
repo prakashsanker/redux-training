@@ -8,7 +8,6 @@ import { Provider } from "react-redux";
 import todo from "./todo.reducer.js";
 
 const store = createStore(todo);
-
 ReactDOM.render(
   <Provider store={store}>
     <App />
