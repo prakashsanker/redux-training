@@ -8,7 +8,6 @@ export default class TodoList extends React.Component {
   }
 
   render() {
-    console.log("IS TODO LIST RENDEING");
     return (
       <React.Fragment>
         {this.props.todos.map(todo => {

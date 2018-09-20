@@ -6,7 +6,6 @@ import {
 } from "./todo.actions.js";
 import data from "./data.js";
 
-const COMPLETED = "completed";
 const OPEN = "open";
 
 const todo = (state = [], action) => {
