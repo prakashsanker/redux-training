@@ -1,66 +1,37 @@
 import {
-  CREATE_TODO,
-  EDIT_TODO,
   GET_TODOS,
-  DELETE_TODO
+  GET_TODOS_FAILURE,
+  GET_TODOS_REQUEST,
+  GET_TODOS_SUCCESS
 } from "./todo.actions.js";
-import data from "./data.js";
-
-const COMPLETED = "completed";
-const OPEN = "open";
-
-const todo = (state = [], action) => {
+const initialState = {
+  todo: [],
+  errorMessage: "",
+  isFetching: false
+};
+const todoReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_TODOS:
-      return data;
-
-    case CREATE_TODO:
-      let existingState = state;
-
-      const todoDetails = {};
-      todoDetails.id = new Date().getTime();
-      todoDetails.description = action.data.desc;
-      todoDetails.title = action.data.title;
-      todoDetails.time = Date.now();
-      todoDetails.status = OPEN;
-      const newTodos = existingState.map(todo => todo);
-
-      return newTodos;
+    case GET_TODOS_REQUEST:
+      return {
+        ...state,
+        isFetching: true
+      };
+    case GET_TODOS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        todo: action.todoData
+      };
+    case GET_TODOS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.errorMessage
+      };
 
     default:
       return state;
   }
 };
-export default todo;
 
-// state = null
-
-// todo(state, action) --> returns something
-
-// someOtherREducer(todo(state, action));
-
-// before
-
-/*
- state = {
-   id: null,
-   name: "default name"
- }
-
-
- pass it to a reducer, with action type DO_NOTHING
-
-
- // after?
-
- state = {
-   id: null,
-   name: "default name"
- }
-
-
-*/
-
-// after
-
-//
+export default todoReducer;
