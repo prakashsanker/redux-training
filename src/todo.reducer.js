@@ -9,7 +9,6 @@ const initialState = {
   errorMessage: "",
   isFetching: false
 };
-
 const todoReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_TODOS_REQUEST:
@@ -29,6 +28,7 @@ const todoReducer = (state = initialState, action) => {
         isFetching: false,
         errorMessage: action.errorMessage
       };
+
     default:
       return state;
   }
